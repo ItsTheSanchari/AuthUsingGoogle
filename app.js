@@ -1,11 +1,18 @@
+require("dotenv").config();
 const express = require('express')
 const app = express()
-
-const port = process.env.port || 3000
+const cookieParser = require('cookie-parser')
+const port = process.env.PORT || 3000;
+const clientId = process.env.clientId
 //middleware
 app.set('view engine','ejs')
+app.use(express.json())
+app.use(cookieParser())
 app.get('/',(req,res,next)=> {
-    res.send('index')
+    res.render('index',{
+        clientId:clientId,
+
+    })
 })
 
 app.listen(port,() => {
