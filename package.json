@@ -1,0 +1,28 @@
+{
+  "name": "authusinggoogle",
+  "version": "1.0.0",
+  "description": "Creating a simple authentication using google authentication",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"nodemon app.js",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ItsTheSanchari/AuthUsingGoogle.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ItsTheSanchari/AuthUsingGoogle/issues"
+  },
+  "homepage": "https://github.com/ItsTheSanchari/AuthUsingGoogle#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  }
+}
