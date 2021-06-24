@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const port = process.env.PORT || 3000;
 const clientId = process.env.clientId;
 const { OAuth2Client } = require("google-auth-library");
+const { verify } = require("./middleware/verify");
 const client = new OAuth2Client(clientId);
 //middleware
 app.set("view engine", "ejs");
@@ -16,22 +17,8 @@ app.get("/", (req, res, next) => {
     clientId: clientId,
   });
 });
-app.post("/login", (req, res, next) => {
-  console.log("client id", req.body);
-  async function verify() {
-    const ticket = await client.verifyIdToken({
-      idToken: req.body.token,
-      audience: clientId,
-    });
-    const payload = ticket.getPayload();
-    const userid = payload["sub"];
-    console.log("payload", payload);
-  }
-  verify()
-    .then(() => {
-      console.log("verified");
-    })
-    .catch(console.error);
+app.post("/login", verify,(req, res, next) => {
+  console.log("outside the middleware");
 });
 app.listen(port, () => {
   console.log("server running on ", port);
